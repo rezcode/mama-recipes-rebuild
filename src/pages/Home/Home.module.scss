@@ -1,0 +1,19 @@
+.bannerImg img {
+  width: 100%;
+}
+
+.recipeSuggestion {
+  position: relative;
+}
+
+.recipeSuggestion ul {
+  position: absolute !important;
+  z-index: 2;
+}
+
+/* Desktop View */
+// @media (min-width: 900px) {
+//   .reverse {
+//     flex-direction: row-reverse !important;
+//   }
+// }

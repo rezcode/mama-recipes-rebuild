@@ -1,0 +1,12 @@
+.textResponsive h5 {
+  font-size: 100%;
+  text-align: center;
+}
+
+/* If the screen size is smaller than 1200px, set the font-size to 80px */
+@media (max-width: 1023px) {
+  .textResponsive h5 {
+    font-size: 12px;
+    text-align: center;
+  }
+}
