@@ -25,16 +25,15 @@ const AddNewRecipe = () => {
               <div className="col-md-6">
                 <div className="mb-3">
                   <label className="form-label">Category</label>
-                  <div className="form-floating">
+                  <div>
                     <select
                       className="form-select"
-                      id="floatingSelect"
-                      aria-label="Floating label select example"
+                      aria-label="Default select example"
                     >
                       <option defaultValue={1}>Cakes</option>
-                      <option value={2}>Dessert</option>
-                      <option value={3}>Fat Food</option>
-                      <option value={4}>Vegan Food</option>
+                      <option value={1}>One</option>
+                      <option value={2}>Two</option>
+                      <option value={3}>Three</option>
                     </select>
                   </div>
                 </div>

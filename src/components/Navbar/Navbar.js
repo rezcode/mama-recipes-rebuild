@@ -12,7 +12,10 @@ function NavScrollExample() {
   return (
     <Navbar bg="primary" expand="lg">
       <Container>
-        <Navbar.Brand className="text-white" onClick={() => navigate("/")}>
+        <Navbar.Brand
+          className={`text-white ${style.link}`}
+          onClick={() => navigate("/")}
+        >
           Mama Recipes
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
