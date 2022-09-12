@@ -6,6 +6,7 @@ import { register, reset } from "../../redux/features/authSlice";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
+import ButtonSpinner from "../../components/ButtonSpinner/ButtonSpinner";
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -143,13 +144,16 @@ const Register = () => {
                   </div>
                   <hr />
                   <div className="mb-3 text-center d-grid">
-                    <button
-                      type="submit"
-                      className="btn btn-primary text-white"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? "Loading..." : "submit"}
-                    </button>
+                    {isLoading ? (
+                      <ButtonSpinner />
+                    ) : (
+                      <button
+                        className="btn btn-primary text-white"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                    )}
                   </div>
                   <p className="text-center">
                     Already have an account? <Link to={"/login"}>sign in</Link>

@@ -4,11 +4,16 @@ import NewRecipes from "../../components/NewRecipes/NewRecipes";
 import style from "./Home.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { searchRecipe } from "../../redux/features/recipeSlice";
+import { authSlice } from "../../redux/features/authSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
   const searchList = useSelector((state) => state.recipe.search);
   const [searchTitle, setSearchTitle] = useState("");
+
+  const userData = useSelector((state) => state.auth);
+
+  console.log("userdata", userData.user);
 
   const handleSearch = (e) => {
     e.preventDefault();
