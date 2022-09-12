@@ -4,11 +4,16 @@
 
 .recipeSuggestion {
   position: relative;
+  width: 100%;
 }
 
 .recipeSuggestion ul {
   position: absolute !important;
-  z-index: 2;
+  z-index: 1;
+}
+
+.recipeSuggestion li {
+  cursor: pointer;
 }
 
 /* Desktop View */

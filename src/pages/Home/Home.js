@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import food from "../../assets/images/banner-image.png";
 import NewRecipes from "../../components/NewRecipes/NewRecipes";
 import style from "./Home.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { searchRecipe } from "../../redux/features/recipeSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const searchList = useSelector((state) => state.recipe.search);
+  const [searchTitle, setSearchTitle] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(searchRecipe(searchTitle));
+  };
+
   return (
     <>
       <div className="mb-4 bg-light rounded-3">
@@ -18,12 +29,13 @@ const Home = () => {
                   Discover <span className="text-primary">Recipe</span> <br /> &{" "}
                   Delicious Food
                 </h1>
-                <form className="row g-3">
+                <form onKeyUp={handleSearch} className="row g-3">
                   <div className="col-8">
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Food name..."
+                      onChange={(e) => setSearchTitle(e.target.value)}
                     />
                   </div>
                   <div className="col-4">
@@ -34,11 +46,18 @@ const Home = () => {
                 </form>
                 <div className={style.recipeSuggestion}>
                   <ul className="list-group">
-                    <li className="list-group-item">A second item</li>
-                    <li className="list-group-item">A third item</li>
-                    <li className="list-group-item">A fourth item</li>
-                    <li className="list-group-item">And a fifth one</li>
-                    <li className="list-group-item">See all Recipes</li>
+                    {searchTitle === ""
+                      ? null
+                      : searchList?.map((item, index) => (
+                          <>
+                            <li
+                              key={index}
+                              className="list-group-item list-group-item-action"
+                            >
+                              {item.title}
+                            </li>
+                          </>
+                        ))}
                   </ul>
                 </div>
               </div>
