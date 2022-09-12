@@ -49,14 +49,12 @@ const Home = () => {
                     {searchTitle === ""
                       ? null
                       : searchList?.map((item, index) => (
-                          <>
-                            <li
-                              key={index}
-                              className="list-group-item list-group-item-action"
-                            >
-                              {item.title}
-                            </li>
-                          </>
+                          <li
+                            key={index}
+                            className="list-group-item list-group-item-action"
+                          >
+                            {item.title}
+                          </li>
                         ))}
                   </ul>
                 </div>

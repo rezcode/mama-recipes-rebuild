@@ -31,14 +31,12 @@ function NavScrollExample() {
             <Nav.Link
               onClick={() => navigate("/add-new-recipe")}
               className="text-white"
-              href="#action2"
             >
               Add Recipe
             </Nav.Link>
             <Nav.Link
               onClick={() => navigate("/profile")}
               className="text-white"
-              href="#action2"
             >
               Profile
             </Nav.Link>
