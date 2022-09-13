@@ -4,7 +4,6 @@ import NewRecipes from "../../components/NewRecipes/NewRecipes";
 import style from "./Home.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { searchRecipe } from "../../redux/features/recipeSlice";
-import { authSlice } from "../../redux/features/authSlice";
 
 const Home = () => {
   const dispatch = useDispatch();

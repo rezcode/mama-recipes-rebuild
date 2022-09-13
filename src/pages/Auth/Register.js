@@ -34,10 +34,7 @@ const Register = () => {
     }
 
     if (isSuccess) {
-      Swal.fire({
-        icon: "success",
-        text: message,
-      }).then((result) => navigate("/login"));
+      navigate("/login");
     }
 
     dispatch(reset());
@@ -65,6 +62,12 @@ const Register = () => {
         password,
       };
       dispatch(register(body));
+      if (isSuccess) {
+        Swal.fire({
+          icon: "success",
+          text: message,
+        }).then((result) => navigate("/login"));
+      }
     }
   };
 

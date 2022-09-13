@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Auth.module.scss";
-import { login, reset } from "../../redux/features/authSlice";
+import { login } from "../../redux/features/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -32,10 +32,9 @@ const Login = () => {
       });
     }
 
-    if (isSuccess) {
+    if (user?.token) {
       navigate("/");
     }
-
     // dispatch(reset());
   }, [user, isError, isSuccess, navigate, message, dispatch]);
 
