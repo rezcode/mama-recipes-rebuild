@@ -3,16 +3,16 @@ import food from "../../assets/images/banner-image.png";
 import NewRecipes from "../../components/NewRecipes/NewRecipes";
 import style from "./Home.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { searchRecipe } from "../../redux/features/recipeSlice";
+import { searchRecipe } from "../../redux/features/recipe/recipeSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
   const searchList = useSelector((state) => state.recipe.search);
   const [searchTitle, setSearchTitle] = useState("");
 
-  const userData = useSelector((state) => state.auth);
+  // const userData = useSelector((state) => state.auth);
 
-  console.log("userdata", userData.user);
+  // console.log("userdata", userData.user);
 
   const handleSearch = (e) => {
     e.preventDefault();

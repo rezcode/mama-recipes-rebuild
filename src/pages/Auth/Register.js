@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./Auth.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { register, reset } from "../../redux/features/authSlice";
+import { register } from "../../redux/features/auth/authSlice";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
@@ -36,8 +36,6 @@ const Register = () => {
     if (isSuccess) {
       navigate("/login");
     }
-
-    dispatch(reset());
   }, [user, isError, isSuccess, navigate, message, dispatch]);
 
   const onchange = (e) => {

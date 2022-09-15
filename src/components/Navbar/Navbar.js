@@ -5,9 +5,39 @@ import Button from "react-bootstrap/Button";
 import style from "./Navbar.module.scss";
 import { BiUserCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser, reset } from "../../redux/features/user/userSlice";
+import { resetLoggedUser } from "../../redux/features/auth/authSlice";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 function NavScrollExample() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const dataUser = useSelector((state) => state.auth.user);
+  const userProfile = useSelector((state) => state.user.user);
+
+  console.log("user state", userProfile);
+  console.log("user auth", dataUser);
+
+  const body = {
+    config: {
+      headers: {
+        Authorization: `Bearer ${dataUser?.token}`,
+      },
+    },
+    id: dataUser?.data?.id,
+  };
+
+  useEffect(() => {
+    dispatch(getUser(body));
+  }, [dispatch]);
+
+  const handleLogout = async () => {
+    await dispatch(reset());
+    await dispatch(resetLoggedUser());
+    Swal.fire("Logout Success");
+  };
 
   return (
     <Navbar bg="primary" expand="lg">
@@ -41,13 +71,23 @@ function NavScrollExample() {
               Profile
             </Nav.Link>
           </Nav>
-          <Button
-            onClick={() => navigate("/login")}
-            variant="outline-light"
-            className={style.imageUser}
-          >
-            <BiUserCircle size={25} /> <span>Login</span>
-          </Button>
+          {!userProfile?.length ? (
+            <Button
+              onClick={() => navigate("/login")}
+              variant="outline-light"
+              className={style.imageUser}
+            >
+              <BiUserCircle size={25} /> <span>login</span>
+            </Button>
+          ) : (
+            <Button
+              onClick={handleLogout}
+              variant="outline-light"
+              className={style.imageUser}
+            >
+              <BiUserCircle size={25} /> <span>Logout</span>
+            </Button>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

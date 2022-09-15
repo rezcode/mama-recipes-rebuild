@@ -3,7 +3,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import style from "./NewRecipes.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchNewRecipe } from "../../redux/features/recipeSlice";
+import { fetchNewRecipe } from "../../redux/features/recipe/recipeSlice";
 import { useEffect } from "react";
 
 const NewRecipes = () => {
