@@ -16,9 +16,9 @@ function NavScrollExample() {
   const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.auth.user);
   const userProfile = useSelector((state) => state.user.user);
+  const message = useSelector((state) => state.user);
 
-  console.log("user state", userProfile);
-  console.log("user auth", dataUser);
+  // console.log("user auth", dataUser);
 
   const body = {
     config: {
@@ -31,7 +31,24 @@ function NavScrollExample() {
 
   useEffect(() => {
     dispatch(getUser(body));
-  }, [dispatch]);
+    if (message?.message === "jwt expired") {
+      dispatch(reset());
+      dispatch(resetLoggedUser());
+      Swal.fire({
+        icon: "info",
+        text: "Your session has expired, please log in again",
+        confirmButtonText: "Login",
+        cancelButtonText: "later",
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("login");
+        } else {
+          navigate("/");
+        }
+      });
+    }
+  }, [dispatch, message?.message]);
 
   const handleLogout = async () => {
     await dispatch(reset());
